@@ -1,8 +1,8 @@
 import express from 'express';
-* as dotenv from 'dotenv';
+import * as dotenv from 'dotenv';
 dotenv.config({ path: 'variables.env' });
 import indexRouter from './routes/index.js';
-{ ErrorHandler } from './middleware/errorHandler.js';
+import { ErrorHandler } from './middleware/errorHandler.js';
 
 const app = express();
 
