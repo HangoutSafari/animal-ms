@@ -12,3 +12,9 @@ export async function getAnimalsData() {
   if (error) console.log('query error', error);
   else return data;
 }
+
+export async function getAnimalById(id) {
+  const { data, error } = await supabase.from('animals').select().eq('id',id);
+  if (error) console.log('query error', error);
+  else return data;
+}

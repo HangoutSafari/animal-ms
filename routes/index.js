@@ -1,6 +1,6 @@
 import express, { Router } from 'express';
 import cors from 'cors';
-import { getAnimals } from '../controllers/animalsViaSupabase.js';
+import { getAnimals, getAnimal } from '../controllers/animalsViaSupabase.js';
 
 const router = express.Router();
 
@@ -25,5 +25,6 @@ router.options('/animals', (req, res, next) => {
 });
 
 router.get('/animals', cors(), getAnimals);
+router.get('/animals/:id',cors(),getAnimal)
 
 export default router;
