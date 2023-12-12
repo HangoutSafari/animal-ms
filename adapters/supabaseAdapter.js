@@ -14,7 +14,7 @@ export async function getAnimalsData() {
 }
 
 export async function getAnimalById(id) {
-  const { data, error } = await supabase.from('animals').select().eq('id',id);
-  if (error) console.log('query error', error);
+  const { data, error } = await supabase.from('animals').select().eq('id',id).single();
+  if (error) return {id:null};
   else return data;
 }
