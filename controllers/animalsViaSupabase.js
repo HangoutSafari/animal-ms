@@ -1,4 +1,6 @@
 import { getAnimalsData,getAnimalById } from "../adapters/supabaseAdapter.js";
+import { getAuthDataFrom, getDataFrom } from "../getCurrentSession.js";
+
 
 export async function getAnimals(req, res) {
   try {
@@ -16,4 +18,7 @@ export async function getAnimal(req, res) {
   } catch (err) {
     res.send(`error in viaSupabase: ${err}`);
   }
+}
+export async function getNewAnimals(req, res) {
+  getAuthDataFrom(req, res, "new_animals");
 }

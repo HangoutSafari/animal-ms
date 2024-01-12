@@ -4,11 +4,7 @@ import { getAnimals, getAnimal } from '../controllers/animalsViaSupabase.js';
 
 const router = express.Router();
 
-router.get('/', (req, res, next) => {
-  res.json("it's working :3 ");
-});
-
-router.options('/animals', (req, res, next) => {
+router.options('/', (req, res, next) => {
   try {
     res.header({
       allow: 'GET, POST, OPTIONS',
@@ -24,7 +20,7 @@ router.options('/animals', (req, res, next) => {
   }
 });
 
-router.get('/animals', cors(), getAnimals);
-router.get('/animals/:id',cors(),getAnimal)
+router.get('/', cors(), getAnimals);
+router.get('/:id',cors(),getAnimal)
 
 export default router;
