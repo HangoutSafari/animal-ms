@@ -1,4 +1,9 @@
-import { deleteAuthDataFrom, getAuthDataFrom, insertAuthDataTo, updateAuthDataTo } from "../dbHelper.js";
+import { deleteAuthDataFrom, getAuthDataFrom, getAuthDataWithFunction, insertAuthDataTo, updateAuthDataTo } from "../dbHelper.js";
+
+export async function getAuthAllAnimalsFull(req, res) {
+  // getAuthDataWithFunction(req, res, "get_animals");
+  getAuthDataFrom(req, res, "full_animals");
+}
 
 export async function getAuthAllAnimals(req, res) {
   getAuthDataFrom(req, res, "animals");

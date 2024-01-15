@@ -1,5 +1,5 @@
 import express, { Router } from 'express';
-import { deleteAuthAnimal, getAuthAllAnimals, getAuthChosenAnimal, insertAuthAnimal, updateAuthAnimal } from '../controllers/animalsViaSupabase.js';
+import { deleteAuthAnimal, getAuthAllAnimals, getAuthAllAnimalsFull, getAuthChosenAnimal, insertAuthAnimal, updateAuthAnimal } from '../controllers/animalsViaSupabase.js';
 
 
 const router = express.Router();
@@ -25,6 +25,7 @@ router.options('/', (req, res, next) => {
 
 
 router.get('/', getAuthAllAnimals);
+router.get('/full', getAuthAllAnimalsFull);
 router.get('/:id',getAuthChosenAnimal);
 router.post('/', insertAuthAnimal);
 router.put('/:id', updateAuthAnimal);

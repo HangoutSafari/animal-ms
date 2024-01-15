@@ -126,12 +126,12 @@ async function deleteData(supabaseInstance, tableName, column, condition) {
   return await supabaseInstance.from(tableName).delete().eq(column, condition);
 }
 
-async function getDataWithFunction(req, res, functionName, key = null, value = null) {
+export async function getDataWithFunction(req, res, functionName, key = null, value = null) {
   const {data, error} = await callSupabaseRPC(supabase, functionName, key, value);
   sendToClient(res, await data, await error);
 }
 
-async function getAuthDataWithFunction(req, res, functionName, key = null, value = null) {
+export async function getAuthDataWithFunction(req, res, functionName, key = null, value = null) {
   const session = await getCurrentSession(req);
   if (session['code'] == 1) res.send(`error in session: ${session['error']}`);
   else {
