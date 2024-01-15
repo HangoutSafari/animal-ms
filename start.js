@@ -8,10 +8,9 @@ import cors from 'cors';
 
 const app = express();
 
-
-app.use('/animals/free', indexRouter);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use('/animals/free', indexRouter);
 app.use('/animals/auth', authRouter);
 app.use((req, res, next) => {
   try {

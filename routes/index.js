@@ -1,13 +1,13 @@
 import express, { Router } from 'express';
 import cors from 'cors';
 import { getAnimals, getAnimal } from '../controllers/animalsViaSupabase.js';
-
+import { deleteAnimal, getAllAnimals, getChosenAnimal, insertAnimal, updateAnimal } from '../controllers/animalsViaSupabase.js';
 const router = express.Router();
 
 router.options('/', (req, res, next) => {
   try {
     res.header({
-      allow: 'GET, POST, OPTIONS',
+      allow: 'GET, POST, PUT, DELETE, OPTIONS',
       'Content-type': 'application/json',
       Data: Date.now(),
       'Content-length': 0,
@@ -20,7 +20,9 @@ router.options('/', (req, res, next) => {
   }
 });
 
-router.get('/', cors(), getAnimals);
-router.get('/:id',cors(),getAnimal)
-
+router.get('/', cors(), getAllAnimals);
+router.get('/:id', cors(), getChosenAnimal);
+router.post('/', cors(), insertAnimal);
+router.put('/:id', cors(), updateAnimal);
+router.delete('/:id', cors(), deleteAnimal);
 export default router;
